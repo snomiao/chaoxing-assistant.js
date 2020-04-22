@@ -1,0 +1,24 @@
+{
+  "name": "chaoxingautosign",
+  "version": "1.0.0",
+  "description": "chaoxing auto sign",
+  "main": "index.js",
+  "scripts": {
+    "run": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snomiao/ChaoxingAutoSign.js.git"
+  },
+  "author": "snomiao@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snomiao/ChaoxingAutoSign.js/issues"
+  },
+  "homepage": "https://github.com/snomiao/ChaoxingAutoSign.js#readme",
+  "dependencies": {
+    "build-url": "^2.0.0",
+    "yaml": "^1.9.2"
+  }
+}
