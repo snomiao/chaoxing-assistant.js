@@ -41,7 +41,7 @@ var 检查Cookies有效 = async (用户) => await 用户GET请求(用户, 'http:
 var 用户登录 = async (用户) => {
     if (用户.Cookie) {
         if (await 检查Cookies有效(用户)) {
-            console.debug('Cookies有效');
+            // console.debug('Cookies有效');
             return 'Cookies有效';
         }
         console.debug('Cookies无效，重新登录中');
@@ -126,15 +126,17 @@ var 对用户签到 = async (用户) => {
 }
 
 !module.parent && (async () => {
+    console.log(new Date().toISOString(), '检查中...')
     // 加载缓存和配置
     var 配置文件 = 'config.yaml'
     var 缓存文件 = 'cache.yaml'
     var 配置 = await 加载utf8文件(配置文件).then(yaml.parse).catch(() => ({})) || {}
     var 缓存 = await 加载utf8文件(缓存文件).then(yaml.parse).catch(() => ({})) || {}
     // 从配置合并用户表
+    if (!配置.用户列表) { return '请先填写配置文件 config.yaml ，格式在 config_demo.yaml 里' }
     深合并(缓存, { 用户表: 键值对列转对象(配置.用户列表.map(e => [e.账号, e])) })
     // 签到
-    var 签到结果 = await 值映射(缓存.用户表, 对用户签到).then(e=>e.filter(e=>e).join('\n'))
+    var 签到结果 = await 值映射(缓存.用户表, 对用户签到).then(e => e.filter(e => e).join('\n'))
     await 保存utf8文件(缓存文件, yaml.stringify(缓存))
-    return new Date().toISOString() + '\n' + 签到结果
-})().then(console.log).catch(console.error)
+    return 签到结果
+})().then(console.log()).catch(console.error)
