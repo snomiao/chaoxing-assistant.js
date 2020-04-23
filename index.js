@@ -86,13 +86,16 @@ var 取手势签到地址 = ({ courseId, classId, activeId }) =>
 // TODO: 其它类型签到：https://mobilelearn.chaoxing.com/pptSign/stuSignajax
 var 对签到任务签到 = async (用户, 课程, 签到任务) => {
     if (签到任务.t签到成功) return '' // 跳过已签到任务
-    var 地址 = (签到任务.title || '').match(/手势/)
-        ? 取手势签到地址({ ...课程, ...签到任务 })
-        : 取普通签到地址({ ...课程, ...签到任务 })
-
-    var html = await 用户GETHTML(用户, 地址)
+    
+    var 手势签到地址 = 取手势签到地址({ ...课程, ...签到任务 })
+    var html = await 用户GETHTML(用户, 手势签到地址)
     深合并(课程, { 签到表: 签到状态提取(html) })
-    // console.debug(签到任务.title + '成功✔')
+    
+    var 普通签到地址 = 取普通签到地址({ ...课程, ...签到任务 })
+    var html = await 用户GETHTML(用户, 普通签到地址)
+    深合并(课程, { 签到表: 签到状态提取(html) })
+    
+    console.debug(签到任务.title + '成功✔')
     return (签到任务.title || '') + '成功✔'
 }
 var 对课程签到 = async (用户, 课程) => {
