@@ -1,3 +1,6 @@
+# vscode
+.vscode/
+
 # Logs
 logs
 *.log
@@ -106,4 +109,4 @@ dist
 # config
 config.yaml
 cache.yaml
-.vscode
+
