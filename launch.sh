@@ -1,5 +1,7 @@
 #/bin/bash
-SHELL_FOLDER=$(cd "$(dirname "$0")";pwd)
-cd $SHELL_FOLDER
-node index.js > cxas.log
 
+SHELL_FOLDER=$(cd "$(dirname "$0")";pwd)
+
+cd $SHELL_FOLDER
+
+node . > cxas.log

@@ -2,9 +2,8 @@
   "name": "chaoxing-assistant",
   "version": "1.0.0",
   "description": "chaoxing auto sign",
-  "main": "index.js",
+  "main": "chaoxing-assistant.js",
   "scripts": {
-    "run": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
